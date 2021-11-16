@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROI Inmobiliaria</title>
+    <link rel="icon" href="imagenes/logoROIt.ico">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleMobile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital@1&display=swap" rel="stylesheet">
+</head>
+<body class="body">
+    <header>
+        <div class="header__container__logo">
+            <img class="header__container__logo__img" src="imagenes/logoROIt.png" alt="">
+            <div class="container__tys">
+                <h1 class="header__container__logo__title">ROI Inmobiliaria</h1>
+                <h2 class="header__container__logo__subtitle">Retorno de tu inversión</h2>
+            </div>
+        </div>
+        <h1 class="header__title">Renta</h1>
+        <div class="header__options">
+            <a href="login.html"><img class="nav__btn" src="imagenes/bx-user.svg" alt=""></a>
+            <img class="nav__btn open__menu" src="imagenes/bx-menu.svg" alt="">
+        </div>
+        <nav class="header__nav">
+            <img class="nav__btn close__menu" src="imagenes/bx-x.svg" alt="">
+            <ul class="header__nav__ul">
+                <li class="header__nav__ul__li"><a class="header__nav__ul__li__a" href="index.html">Home</a></li>
+                <li class="header__nav__ul__li"><a class="header__nav__ul__li__a" href="sale.html">Venta</a></li>
+                <li class="header__nav__ul__li"><a class="header__nav__ul__li__a" href="rent.html">Renta</a></li>
+                <li class="header__nav__ul__li"><a class="header__nav__ul__li__a" href="aboutus.html">Sobre nosotros</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="filters">
+        <select class="filter__item" name="" id="tipoRenta">
+            <option value="">Tipo</option>
+            <option value="Casa">Casa</option>
+            <option value="Terreno">Terreno</option>
+            <option value="Departamento">Departamento</option>
+        </select>
+        <select class="filter__item" name="" id="ubicacionRenta">
+            <option value="">Ubicación</option>
+            <option value="Chiapas">Chiapas</option>
+            <option value="Jalisco">Guadalajara</option>
+            <option value="Mexico">México</option>
+            <option value="Oaxaca">Oaxaca</option>
+        </select>
+        <input id="minRenta" class="filter__item" type="number" placeholder="Min $">
+        <input id="maxRenta" class="filter__item" type="number" placeholder="Max $">
+        <input id="kWordRenta" class="filter__item" type="search" placeholder="Plabra clave">
+
+        <button id="buscarRenta">Buscar</button>
+    </section>
+    <section id="aplicados">
+    
+    </section>
+    <main id="rentaHTML" class="grid__container">
+
+    </main>
+
+    <script src="code.js"></script>
+    <script src="bdCatalogoRenta.js"></script>
+<body>
+    
+</body>
+</html>

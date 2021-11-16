@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROI Inmobiliaria</title>
+    <link rel="icon" href="imagenes/logoROIt.ico">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleMobile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital@1&display=swap" rel="stylesheet">
+</head>
+<body class="body">
+    <header>
+        <div class="header__container__logo">
+            <img class="header__container__logo__img" src="imagenes/logoROIt.png" alt="">
+            <div class="container__tys">
+                <h1 class="header__container__logo__title">ROI Inmobiliaria</h1>
+                <h2 class="header__container__logo__subtitle">Retorno de tu inversión</h2>
+            </div>
+        </div>
+        <h1 class="header__title">Registrarme</h1>
+        <div class="header__options">
+            <a href="login.html"><img class="nav__btn" src="imagenes/bx-user.svg" alt=""></a>
+            <img class="nav__btn open__menu" src="imagenes/bx-menu.svg" alt="">
+        </div>
+        <nav class="header__nav">
+            <img class="nav__btn close__menu" src="imagenes/bx-x.svg" alt="">
+            <ul class="header__nav__ul">
+                <li class="header__nav__ul__li"><a class="header__nav__ul__li__a" href="index.html">Home</a></li>
+                <li class="header__nav__ul__li"><a class="header__nav__ul__li__a" href="sale.html">Sale</a></li>
+                <li class="header__nav__ul__li"><a class="header__nav__ul__li__a" href="rent.html">Rent</a></li>
+                <li class="header__nav__ul__li"><a class="header__nav__ul__li__a" href="aboutus.html">About us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main id="main__register">
+        <form id="form__register" action="">
+            <div class="register__field">
+                <label class="register__labels" for="nombre">Nombre:</label><input class="register__inputs" id="nombre" type="text" autocomplete="off">
+            </div>    
+            <div class="register__field">
+                <label class="register__labels" for="apellido">Apellido:</label><input class="register__inputs" id="apellido" type="text" autocomplete="off">
+            </div>    
+            <div class="register__field">
+                <label class="register__labels" for="telefono">Telefono:</label><input class="register__inputs" id="telefono" type="text" autocomplete="off">
+            </div>    
+            <div class="register__field">
+                <label class="register__labels" for="email">Email:</label><input class="register__inputs" id="email" type="email"autocomplete="off">
+            </div>    
+            <div class="register__field">
+                <label class="register__labels" for="password">Contraseña:</label><input class="register__inputs" id="password" type="password">
+            </div> 
+            <div class="register__field">
+                <input id="aceptT&C" type="checkbox"> <label for="aceptT&C">Estoy de acuerdo con los términos y condiciones.</label>
+            </div> 
+            <div id="register__options">
+                <input type="submit" id="registerUser" value="Registrarme">
+                <a href="login.html">Iniciar sesión</a>
+            </div>
+        
+        </form>
+    </main>
+        <script src="code.js"></script>
+
+</body>
+</html>

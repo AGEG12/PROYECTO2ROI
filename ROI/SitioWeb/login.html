@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROI Inmobiliaria</title>
+    <link rel="icon" href="imagenes/logoROIt.ico">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleMobile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital@1&display=swap" rel="stylesheet">
+</head>
+<body class="body">
+    <header>
+        <div class="header__container__logo">
+            <img class="header__container__logo__img" src="imagenes/logoROIt.png" alt="">
+            <div class="container__tys">
+                <h1 class="header__container__logo__title">ROI Inmobiliaria</h1>
+                <h2 class="header__container__logo__subtitle">Retorno de tu inversión</h2>
+            </div>
+        </div>
+        <h1 class="header__title">Iniciar Seción</h1>
+        <div class="header__options">
+            <a href="login.html"><img class="nav__btn" src="imagenes/bx-user.svg" alt=""></a>
+            <img class="nav__btn open__menu" src="imagenes/bx-menu.svg" alt="">
+        </div>
+        <nav class="header__nav">
+            <img class="nav__btn close__menu" src="imagenes/bx-x.svg" alt="">
+            <ul class="header__nav__ul">
+                <li class="header__nav__ul__li"><a class="header__nav__ul__li__a" href="index.html">Home</a></li>
+                <li class="header__nav__ul__li"><a class="header__nav__ul__li__a" href="sale.html">Sale</a></li>
+                <li class="header__nav__ul__li"><a class="header__nav__ul__li__a" href="rent.html">Rent</a></li>
+                <li class="header__nav__ul__li"><a class="header__nav__ul__li__a" href="aboutus.html">About us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main id="main__login">
+        <form id="form__login" action="">
+            <div class="login__field">
+                <label class="login__labels" for="email">Email:</label><input class="register__inputs" id="lEmail" type="email"autocomplete="off">
+            </div>    
+            <div class="login__field">
+                <label class="login__labels" for="password">Contraseña:</label><input class="register__inputs" id="lPassword" type="password">
+            </div> 
+
+            <div id="login__options">
+                <input type="submit" id="loginUser" value="Iniciar Sesión">
+                <a href="register.html">Registrarme</a>
+            </div>
+        
+        </form>
+    </main>
+        <script>
+            // Selección LOGIN
+            const mainLogin = document.getElementById('main__login');
+            const validarEmail  = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            const lEmail = document.getElementById('lEmail');
+            const lPassword = document.getElementById('lPassword');
+            const formLogin = document.getElementById('form__login');
+
+            formLogin.addEventListener('submit',(e)=>{
+                e.preventDefault();
+                if (lEmail.value == "" || lPassword.value == "") {
+                    mostrarAlerta('LLene los campos solicitados','warning');
+                    return;
+                } else if (!validarEmail.test(lEmail.value) || lPassword.value.length < 4) {
+                    mostrarAlerta('El correo o la contraseña indicada son incorrectos','error');
+                    return;
+                }
+                    mostrarAlerta(`Se ha inciado sesión con el correo ${lEmail.value}`,'success');
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 2000);
+            });
+
+            // Código Menú
+            const menu = document.querySelector(".header__nav");
+            const openMenu = document.querySelector(".open__menu");
+            const closeMenu = document.querySelector(".close__menu")
+
+
+            openMenu.addEventListener("click",()=>{
+                menu.classList.add("in");
+            });
+            closeMenu.addEventListener("click",()=>{
+                menu.classList.remove("in");
+            });
+
+
+
+            // Función mensaje
+
+            function mostrarAlerta(mensaje,tipo) {
+            const divMensaje = document.createElement('DIV');
+            divMensaje.textContent = mensaje;
+            divMensaje.className = 'location';
+
+            if (tipo == 'error') {
+                divMensaje.classList.add('error');
+            } else if (tipo == 'warning') {
+                divMensaje.classList.add('warning');
+            } else {;
+                divMensaje.classList.add('success')
+            }
+            mainLogin.appendChild(divMensaje);
+            
+            setTimeout(() => {
+                divMensaje.remove();
+            }, 2000);
+        }
+        </script>
+
+</body>
+</html>

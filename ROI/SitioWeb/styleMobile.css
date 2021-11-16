@@ -1,0 +1,162 @@
+@media only screen and (max-width: 1000px) {
+    /* HEADER */
+    header {
+        height: 100px;
+    }
+    .header__title {
+        font-size: 2rem;
+    }
+    .nav__btn {
+        width: 50px;
+        top: 20px;
+        right: 20px;
+    }
+        /* LOGO */
+        .container__tys {
+            display: none;
+        }
+        .header__container__logo {
+            left: 20px;
+        }
+        .header__container__logo__img {
+            width: 60px;
+        }
+    /* SOBRE NOSOTROS */
+    /* CIRCULOS DE INFORMACIÓN */
+    .info__container {
+        flex-direction: column;
+        width: 100vw;
+        align-items: center;
+    }
+    .ventana__emergente {
+        width: 90%;
+        height: 90%;
+        flex-direction: column-reverse;
+    }
+    .ventana__emergente__cerrar {
+        top: 2vw;
+        right: 2vw;
+    }
+    .ventana__emergente__img {
+        width: 100%;
+        height: 50%;
+    }
+    .ventana__emergente__info {
+        width: 100%;
+        height: 50%;  
+    }
+    .ventana__emergente__texto {
+        font-size: calc(0.2rem + 2vw);
+    }
+    .text__mission {
+        font-size: calc(1.3rem + 1.3vw);
+    }
+
+    /* HISTORIA */ 
+    .historia__container {
+        flex-direction: column;
+    }
+    .historia {
+        width: 100%;
+    }
+    .historia__title {
+        padding: 20px;
+    }
+    .historia__text {
+        font-size: calc(0.5rem + 1.5vw);
+    }
+    .historia__img {
+        width: 100%;
+    }
+    /* SERVICIO */
+    .servicio__container {
+        flex-direction: column;
+    }
+    .servicio {
+        width: 100%;
+    }
+    .servicio__title {
+        padding: 20px;
+    }
+    .servicio__text {
+        font-size: calc(0.5rem + 1.5vw);
+    }
+    .servicio__img {
+        width: 100%;
+    }
+    /* NUESTROS VALORES */
+
+    /* TESTIMONIOS */
+    .testimonios {
+        width: 60vw;
+    }
+    .testimonio__persona {
+        height: auto;
+        flex-direction: column;
+        justify-content: center;
+        border-top-right-radius: 38%;
+        border-top-left-radius: 38%;
+    }
+    .testimonio__persona__img {
+        width: 250px;
+    }
+    .testimonio__persona__text {
+        width: 85%;
+    }
+    .ajustar__derecha {
+        top: 0;
+        left: 0;
+    }
+    .voltear {
+        flex-direction: column-reverse;
+    }
+    .ajustar__izquierda {
+        top: 0;
+        left: 0;
+    }
+    /* GREAT PLACE TO WORK */
+    .gptw {
+        flex-direction: column;
+        align-items: center;
+    }
+    .gptw__logo {
+        width: 70%;
+    }
+    .gptw__info {
+        width: 100%;
+    }
+    .gptw__info p {
+        font-size: calc(0.7rem + 2vw); 
+    }
+    .gptw__perspectiva {
+        flex-direction: column-reverse;
+    }
+    .gptw__perspectiva img {
+        width: 60%;
+        margin-bottom: 30px;
+    }
+
+    /* INDEX */
+    #main__section__img {
+        height: 200px;
+    }
+    #img__slider {
+        height: 200px;
+    }
+    .main__section__item__img {
+        height: 200px;
+    }
+
+    .bestseller {
+        height: auto;
+    }
+    .bestseller__container {
+        height: auto;
+        flex-direction: column;
+    }
+        .bestseller__item {
+            width: 80%;
+            height: 300px;
+            margin: 30px;
+        }
+}
