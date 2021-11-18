@@ -116,6 +116,7 @@ rTipo.addEventListener('input',()=>{
         etiquetaFiltro(rTipo,rTipo.value,'tipo');
         filtrosBusqueda.tipo = rTipo.value;
         filtrarOpciones();
+        rTipo.disabled = true;
     }
 });
 rUbicacion.addEventListener('input',()=>{
@@ -123,6 +124,7 @@ rUbicacion.addEventListener('input',()=>{
         etiquetaFiltro(rUbicacion,rUbicacion.value,'ubicacion');
         filtrosBusqueda.ubicacion = rUbicacion.value;
         filtrarOpciones();
+        rUbicacion.disabled = true;
     }
 });
 rMin.addEventListener('change',()=>{
@@ -130,6 +132,7 @@ rMin.addEventListener('change',()=>{
         etiquetaFiltro(rMin,"$"+rMin.value,'minimo');
         filtrosBusqueda.min = rMin.value;
         filtrarOpciones();
+        rMin.disabled = true;
     }
 });
 rMax.addEventListener('change',()=>{
@@ -137,6 +140,7 @@ rMax.addEventListener('change',()=>{
         etiquetaFiltro(rMax,"$"+rMax.value,'maximo');
         filtrosBusqueda.max = rMax.value;
         filtrarOpciones();
+        rMax.disabled = true;
     }
 });
 
@@ -153,21 +157,25 @@ function etiquetaFiltro(input,valor,eliminar) {
             let resultado = catalogoRenta.filter(filtrarUbicacion).filter(filtrarMin).filter(filtrarMax);
             imprimirHTML(resultado);
             console.log(filtrosBusqueda);
+            rTipo.disabled = false;
         } else if (eliminar == 'ubicacion') {
             filtrosBusqueda.ubicacion = "";
             let resultado = catalogoRenta.filter(filtrarTipo).filter(filtrarMin).filter(filtrarMax);
             imprimirHTML(resultado);
             console.log(filtrosBusqueda);
+            rUbicacion.disabled = false;
         } else if (eliminar == 'minimo') {
             filtrosBusqueda.min = "";
             const resultado = catalogoRenta.filter(filtrarTipo).filter(filtrarUbicacion).filter(filtrarMax);
             imprimirHTML(resultado);
             console.log(filtrosBusqueda);
+            rMin.disabled = false;
         } else if (eliminar == 'maximo') {
             filtrosBusqueda.max = "";
             const resultado = catalogoRenta.filter(filtrarTipo).filter(filtrarUbicacion).filter(filtrarMin);
             imprimirHTML(resultado);
             console.log(filtrosBusqueda);
+            rMax.disabled = false;
         }
     }
     tablero.appendChild(labelF);
@@ -175,14 +183,20 @@ function etiquetaFiltro(input,valor,eliminar) {
 
 function imprimirHTML(catalogo) {
     limpiarHTML();
-    // Leer el elemento Resultado
+    quitarSR();
+
     const contenedor = document.getElementById('rentaHTML');
-    // Construir el HTML de los autos
+
     catalogo.forEach(item => {
         const renta = document.createElement('DIV');
         renta.innerHTML = `
             <img src=${item.src} alt="">
             <a class="btn-vm" href="#">Ver más</a>
+            <div class="opcion__info">
+                <p>${item.tipo} en ${item.oferta}</p>
+                <p>Ubicado en ${item.ubicacion}</p>
+                <p>Precio: $${item.precio}</p>
+            </div>
         `;
         renta.className = 'grid__item';
         contenedor.appendChild(renta);
@@ -195,7 +209,10 @@ function limpiarHTML() {
         contenedor.removeChild(contenedor.firstChild);
     }
 }
-imprimirHTML(catalogoRenta);
+
+document.addEventListener('DOMContentLoaded', () => {
+    imprimirHTML(catalogoRenta);
+}); 
 
 
 
@@ -228,14 +245,35 @@ function filtrarMax(opciones) {
     return opciones;
 }
 
+function sinResultado() {
+    const sinResultado = document.getElementById('sin__resultado');
+    const contenedor = document.createElement('DIV');
+    contenedor.className = 'sr';
+    const imgSinResultado = new Image();
+    const textSinResultado = document.createElement('P');
+    imgSinResultado.src = 'imagenes/sinresultados.svg';
+    textSinResultado.textContent = 'Sin Resultados';
+    contenedor.appendChild(imgSinResultado);
+    contenedor.appendChild(textSinResultado);
+
+    sinResultado.appendChild(contenedor);
+}
+function quitarSR() {
+    const sinResultado = document.getElementById('sin__resultado');
+    while(sinResultado.firstChild) {
+    sinResultado.removeChild(sinResultado.firstChild);
+    }
+}
+
+
 function filtrarOpciones() {
     const resultado = catalogoRenta.filter(filtrarTipo).filter(filtrarUbicacion).filter(filtrarMin).filter(filtrarMax);
  
- //    console.log(resultado);
     if(resultado.length){
-         imprimirHTML(resultado);
+        quitarSR();
+        imprimirHTML(resultado);
     } else {
-        alert('No hay resultados');
-        imprimirHTML(catalogoRenta);
+        limpiarHTML();
+        sinResultado();
     }
  }

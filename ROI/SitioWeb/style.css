@@ -292,6 +292,7 @@ header {
 }
 .grid__item {
     outline: 5px solid black;
+    max-width: 600px;
 }
 .grid__item img {
     width: 100%;
@@ -315,4 +316,40 @@ header {
 .grid__item:hover > .btn-vm {
     display: block;
     opacity: 1;
+}
+
+.opcion__info {
+    position: relative;
+    bottom: calc(68px + 35%);
+    left: 0;
+    height: 35%;
+    box-sizing: border-box;
+    padding: 30px 0;
+    background-color: #000000b5;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    color: #fff;
+    font-size: 1.5rem;
+    opacity: 0;
+    transition: all 0.5s;
+}
+
+.grid__item:hover > .opcion__info{
+    opacity: 1;
+}
+.sr {
+    width: 60vw;
+    margin: auto;
+}
+.sr img {
+    width: 70%;
+}
+.sr p {
+    position: relative;
+    top: -50px;
+    text-align: right;
+    font-size: 5rem;
 }
