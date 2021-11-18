@@ -113,30 +113,34 @@ const filtrosBusqueda = {
 
 rTipo.addEventListener('input',()=>{
     if (rTipo.value != "") {
-        etiquetaFiltro(rTipo,rTipo.value);
+        etiquetaFiltro(rTipo,rTipo.value,'tipo');
         filtrosBusqueda.tipo = rTipo.value;
+        filtrarOpciones();
     }
 });
 rUbicacion.addEventListener('input',()=>{
     if (rUbicacion.value != "") {
-        etiquetaFiltro(rUbicacion,rUbicacion.value);
+        etiquetaFiltro(rUbicacion,rUbicacion.value,'ubicacion');
         filtrosBusqueda.ubicacion = rUbicacion.value;
+        filtrarOpciones();
     }
 });
 rMin.addEventListener('change',()=>{
     if (rMin.value != "") {
-        etiquetaFiltro(rMin,"$"+rMin.value);
+        etiquetaFiltro(rMin,"$"+rMin.value,'minimo');
         filtrosBusqueda.min = rMin.value;
+        filtrarOpciones();
     }
 });
 rMax.addEventListener('change',()=>{
     if (rMax.value != "") {
-        etiquetaFiltro(rMax,"$"+rMax.value);
+        etiquetaFiltro(rMax,"$"+rMax.value,'maximo');
         filtrosBusqueda.max = rMax.value;
+        filtrarOpciones();
     }
 });
 
-function etiquetaFiltro(input,valor) {
+function etiquetaFiltro(input,valor,eliminar) {
     const tablero = document.getElementById('aplicados');
     const labelF = document.createElement('P');
     labelF.textContent = valor + "  x";
@@ -144,16 +148,37 @@ function etiquetaFiltro(input,valor) {
     labelF.onclick = ()=>{
         tablero.removeChild(labelF);
         input.value = "";
+        if (eliminar == 'tipo') {
+            filtrosBusqueda.tipo = "";
+            let resultado = catalogoRenta.filter(filtrarUbicacion).filter(filtrarMin).filter(filtrarMax);
+            imprimirHTML(resultado);
+            console.log(filtrosBusqueda);
+        } else if (eliminar == 'ubicacion') {
+            filtrosBusqueda.ubicacion = "";
+            let resultado = catalogoRenta.filter(filtrarTipo).filter(filtrarMin).filter(filtrarMax);
+            imprimirHTML(resultado);
+            console.log(filtrosBusqueda);
+        } else if (eliminar == 'minimo') {
+            filtrosBusqueda.min = "";
+            const resultado = catalogoRenta.filter(filtrarTipo).filter(filtrarUbicacion).filter(filtrarMax);
+            imprimirHTML(resultado);
+            console.log(filtrosBusqueda);
+        } else if (eliminar == 'maximo') {
+            filtrosBusqueda.max = "";
+            const resultado = catalogoRenta.filter(filtrarTipo).filter(filtrarUbicacion).filter(filtrarMin);
+            imprimirHTML(resultado);
+            console.log(filtrosBusqueda);
+        }
     }
     tablero.appendChild(labelF);
 }
 
-function imprimirHTML() {
-
+function imprimirHTML(catalogo) {
+    limpiarHTML();
     // Leer el elemento Resultado
     const contenedor = document.getElementById('rentaHTML');
     // Construir el HTML de los autos
-    catalogoRenta.forEach(item => {
+    catalogo.forEach(item => {
         const renta = document.createElement('DIV');
         renta.innerHTML = `
             <img src=${item.src} alt="">
@@ -163,4 +188,54 @@ function imprimirHTML() {
         contenedor.appendChild(renta);
     })
 }
-imprimirHTML();
+
+function limpiarHTML() {
+    const contenedor = document.getElementById('rentaHTML');
+    while(contenedor.firstChild) {
+        contenedor.removeChild(contenedor.firstChild);
+    }
+}
+imprimirHTML(catalogoRenta);
+
+
+
+// APLICAR FILTROS
+function filtrarTipo(opciones) {
+    if(filtrosBusqueda.tipo) {
+        return opciones.tipo === filtrosBusqueda.tipo;
+    }
+    return opciones;
+}
+
+function filtrarUbicacion(opciones) {
+    if(filtrosBusqueda.ubicacion) {
+        return opciones.ubicacion === filtrosBusqueda.ubicacion;
+    }
+    return opciones;
+}
+
+function filtrarMin(opciones) {
+    if(filtrosBusqueda.min) {
+        return opciones.precio >= Number(filtrosBusqueda.min);
+    }
+    return opciones;
+}
+
+function filtrarMax(opciones) {
+    if(filtrosBusqueda.max) {
+        return opciones.precio <= Number(filtrosBusqueda.max);
+    }
+    return opciones;
+}
+
+function filtrarOpciones() {
+    const resultado = catalogoRenta.filter(filtrarTipo).filter(filtrarUbicacion).filter(filtrarMin).filter(filtrarMax);
+ 
+ //    console.log(resultado);
+    if(resultado.length){
+         imprimirHTML(resultado);
+    } else {
+        alert('No hay resultados');
+        imprimirHTML(catalogoRenta);
+    }
+ }
