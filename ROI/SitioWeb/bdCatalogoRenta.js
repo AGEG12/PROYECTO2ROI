@@ -96,13 +96,14 @@ const catalogoRenta = [
         src: 'imagenes/vent7.jpg'
     }
 ]
-
 const rTipo = document.getElementById('tipoRenta');
 const rUbicacion = document.getElementById('ubicacionRenta');
 const rMin = document.getElementById('minRenta');
 const rMax = document.getElementById('maxRenta');
-const rKWord = document.getElementById('kWordRenta');
-const btnBuscarRenta = document.getElementById('buscarRenta');
+/* const rKWord = document.getElementById('kWordRenta'); */
+const rOrdenar = document.getElementById('ordenarPrecio');
+const btnquitarFiltros = document.getElementById('quitarFiltros');
+
 
 const filtrosBusqueda = {
     tipo: '',
@@ -110,6 +111,10 @@ const filtrosBusqueda = {
     min: '',
     max: '',
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    imprimirHTML(catalogoRenta);
+}); 
 
 rTipo.addEventListener('input',()=>{
     if (rTipo.value != "") {
@@ -143,6 +148,40 @@ rMax.addEventListener('change',()=>{
         rMax.disabled = true;
     }
 });
+rOrdenar.addEventListener('input',()=>{
+    if (rTipo.value == '' & rUbicacion.value == '' && rMin.value == '' && rMax.value == '') {
+    ordenarResultados(catalogoRenta,rOrdenar.value); 
+    } else {
+        console.log('se aplicaron filtros')
+    }
+
+})
+btnquitarFiltros.addEventListener('click',()=>{
+    const aplicados = document.getElementById('aplicados');
+    while(aplicados.firstChild) {
+        aplicados.removeChild(aplicados.firstChild);
+    }
+    rTipo.disabled = false;
+    rUbicacion.disabled = false;
+    rMin.disabled = false;
+    rMax.disabled = false;
+
+    rTipo.value = ""
+    rUbicacion.value = ""
+    rMin.value = ""
+    rMax.value = "";
+
+    filtrosBusqueda.tipo = '';
+    filtrosBusqueda.ubicacion = '';
+    filtrosBusqueda.min = '';
+    filtrosBusqueda.max = '';
+    
+    filtrarOpciones();
+    imprimirHTML(catalogoRenta);
+
+})
+
+
 
 function etiquetaFiltro(input,valor,eliminar) {
     const tablero = document.getElementById('aplicados');
@@ -158,24 +197,41 @@ function etiquetaFiltro(input,valor,eliminar) {
             imprimirHTML(resultado);
             console.log(filtrosBusqueda);
             rTipo.disabled = false;
+
+// escucha input
+        rOrdenar.addEventListener('input',()=>{
+                ordenarResultados(resultado,rOrdenar.value); 
+        })            
         } else if (eliminar == 'ubicacion') {
             filtrosBusqueda.ubicacion = "";
             let resultado = catalogoRenta.filter(filtrarTipo).filter(filtrarMin).filter(filtrarMax);
             imprimirHTML(resultado);
             console.log(filtrosBusqueda);
             rUbicacion.disabled = false;
+// escucha input
+        rOrdenar.addEventListener('input',()=>{
+            ordenarResultados(resultado,rOrdenar.value); 
+        })            
         } else if (eliminar == 'minimo') {
             filtrosBusqueda.min = "";
             const resultado = catalogoRenta.filter(filtrarTipo).filter(filtrarUbicacion).filter(filtrarMax);
             imprimirHTML(resultado);
             console.log(filtrosBusqueda);
             rMin.disabled = false;
+// escucha input
+        rOrdenar.addEventListener('input',()=>{
+            ordenarResultados(resultado,rOrdenar.value); 
+        })    
         } else if (eliminar == 'maximo') {
             filtrosBusqueda.max = "";
             const resultado = catalogoRenta.filter(filtrarTipo).filter(filtrarUbicacion).filter(filtrarMin);
             imprimirHTML(resultado);
             console.log(filtrosBusqueda);
             rMax.disabled = false;
+// escucha input
+        rOrdenar.addEventListener('input',()=>{
+            ordenarResultados(resultado,rOrdenar.value); 
+        })    
         }
     }
     tablero.appendChild(labelF);
@@ -210,9 +266,7 @@ function limpiarHTML() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    imprimirHTML(catalogoRenta);
-}); 
+
 
 
 
@@ -272,8 +326,30 @@ function filtrarOpciones() {
     if(resultado.length){
         quitarSR();
         imprimirHTML(resultado);
+        rOrdenar.addEventListener('input',()=>{
+            if (rTipo.value == '' & rUbicacion.value == '' && rMin.value == '' && rMax.value == '') {
+                ordenarResultados(catalogoRenta,rOrdenar.value); 
+            } else {
+                ordenarResultados(resultado,rOrdenar.value); 
+            }
+        })
     } else {
         limpiarHTML();
         sinResultado();
     }
  }
+
+
+
+function ordenarResultados(resultados,orden) {  
+    if (orden == 'menor') {
+        resultados.sort((a,b)=>{
+            return a.precio - b.precio;
+        }) 
+    } else if (orden == 'mayor') {
+        resultados.sort((a,b)=>{
+            return b.precio - a.precio;
+        })
+    } 
+    imprimirHTML(resultados);
+}
