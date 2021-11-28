@@ -159,4 +159,16 @@
             height: 300px;
             margin: 30px;
         }
+
+}
+
+@media only screen and (max-width: 800px) {
+    #main__contacto {
+        flex-direction: column;
+        padding: 100px 30px;
+    }
+    #agendar__cita {
+        width: 100%;
+    }
+    
 }

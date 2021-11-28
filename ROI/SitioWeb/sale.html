@@ -31,81 +31,64 @@
                 <li class="header__nav__ul__li"><a class="header__nav__ul__li__a" href="index.html">Home</a></li>
                 <li class="header__nav__ul__li"><a class="header__nav__ul__li__a" href="sale.html">Venta</a></li>
                 <li class="header__nav__ul__li"><a class="header__nav__ul__li__a" href="rent.html">Renta</a></li>
-                <li class="header__nav__ul__li"><a class="header__nav__ul__li__a" href="aboutus.html">Sobre nosotros</a></li>
+                <li class="header__nav__ul__li"><a class="header__nav__ul__li__a" href="contact.html">Contacto</a></li>
             </ul>
         </nav>
     </header>
 
     <section class="filters">
-        <select class="filter__item" name="" id="">
-            <option value="Tipo">Tipo</option>
+        <select class="filter__item" name="" id="tipoVenta">
+            <option value="">Tipo</option>
             <option value="Casa">Casa</option>
             <option value="Terreno">Terreno</option>
-            <option value="">Departamento</option>
+            <option value="Departamento">Departamento</option>
         </select>
-        <select class="filter__item" name="" id="">
-            <option value="Ubicacion">Ubicación</option>
+        <select class="filter__item" name="" id="ubicacionVenta">
+            <option value="">Ubicación</option>
             <option value="Chiapas">Chiapas</option>
-            <option value="Jalisco">Guadalajara</option>
+            <option value="Jalisco">Jalisco</option>
             <option value="Mexico">México</option>
             <option value="Oaxaca">Oaxaca</option>
         </select>
-        <input class="filter__item" type="number" placeholder="Min $">
-        <input class="filter__item" type="number" placeholder="Max $">
-        <input class="filter__item" type="search" placeholder="Plabra clave">
+        <input id="minVenta" class="filter__item" type="number" placeholder="Min $">
+        <input id="maxVenta" class="filter__item" type="number" placeholder="Max $">
+<!--         <input id="kWordRenta" class="filter__item" type="search" placeholder="Plabra clave"> -->
+        <select class="filter__item" name="" id="ordenarPrecio">
+            <option value="">Ordenar por:</option>
+            <option value="menor">Menor precio</option>
+            <option value="mayor">Mayor precio</option>
+        </select>
+        <button id="quitarFiltros">Quitar filtros</button>
+    </section>
+    <section id="aplicados">
+    
+    </section>
+    <main id="ventaHTML" class="grid__container">
+    </main>
+    <section id="sin__resultado">
+
     </section>
 
-    <main class="grid__container">
-        <div class="grid__item">
-            <img src="imagenes/rent1.jpg" alt="">
-            <a class="btn-vm" href="#">Ver más</a>
+    <footer>
+        <div class="datos__contacto">
+            <h3>Información</h3>
+            <a href="https://goo.gl/maps/pntVrjN2XoSKmuXd7" target=”_blank”><img src="imagenes/bx-current-location.svg" alt=""> Av Juárez 976, Col Americana, Americana, 44100 Guadalajara, Jal.</a>
+            <a href="https://wa.me/529612423431?text=Hola%20ROI%20Inmobiliaria,%20quiero%20mas%20informacion" target=”_blank”><img src="imagenes/bxl-whatsapp.svg" alt="">9612423431</a>
+            <a href="mailto:alan.gusteg@gmail.com" target=”_blank”><img src="imagenes/bx-mail-send.svg" alt="">alan.gusteg@gmail.com</a>
+            <a href="contact.html" target=”_blank”> <img src="imagenes/bxs-calendar.svg" alt=""> Agendar cita</a>
         </div>
-        <div class="grid__item">
-            <img src="imagenes/rent2.jpg" alt="">
-            <a class="btn-vm" href="#">Ver más</a>
+        <div class="footer__nav">
+            <h3>Navegación</h3>
+            <a href="index.html">Inicio</a>
+            <a href="rent.html">En renta</a>
+            <a href="sale.html">En venta</a>
+            <a href="contact.html">Contáctanos</a>
+            <a href="login.html">Iniciar sesión</a>
+            <a href="register.html">Regístrarse</a>
         </div>
-        <div class="grid__item">
-            <img src="imagenes/rent3.jpg" alt="">
-            <a class="btn-vm" href="#">Ver más</a>
-        </div>
-        <div class="grid__item">
-            <img src="imagenes/vent6.jpg" alt="">
-            <a class="btn-vm" href="#">Ver más</a>
-        </div>
-        <div class="grid__item">
-            <img src="imagenes/rent5.jpg" alt="">
-            <a class="btn-vm" href="#">Ver más</a>
-        </div>
-        <div class="grid__item">
-            <img src="imagenes/rent6.jpg" alt="">
-            <a class="btn-vm" href="#">Ver más</a>
-        </div>
-        <div class="grid__item">
-            <img src="imagenes/rent7.jpg" alt="">
-            <a class="btn-vm" href="#">Ver más</a>
-        </div>
-        <div class="grid__item">
-            <img src="imagenes/rent8.jpg" alt="">
-            <a class="btn-vm" href="#">Ver más</a>
-        </div>
-        <div class="grid__item">
-            <img src="imagenes/rent9.jpg" alt="">
-            <a class="btn-vm" href="#">Ver más</a>
-        </div>
-        <div class="grid__item">
-            <img src="imagenes/rent10.jpg" alt="">
-            <a class="btn-vm" href="#">Ver más</a>
-        </div>
-        <div class="grid__item">
-            <img src="imagenes/rent11.jpg" alt="">
-            <a class="btn-vm" href="#">Ver más</a>
-        </div>
-        <div class="grid__item">
-            <img src="imagenes/rent12.jpg" alt="">
-            <a class="btn-vm" href="#">Ver más</a>
-        </div>
-    </main>
+    </footer>
     <script src="code.js"></script>
+    <script src="bdCatalogoVenta.js"></script>
 <body>
     
 </body>

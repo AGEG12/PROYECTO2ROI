@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROI Inmobiliaria</title>
+    <link rel="icon" href="imagenes/logoROIt.ico">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleMobile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital@1&display=swap" rel="stylesheet">
+</head>
+<body class="body">
+    <header>
+        <div class="header__container__logo">
+            <img class="header__container__logo__img" src="imagenes/logoROIt.png" alt="">
+            <div class="container__tys">
+                <h1 class="header__container__logo__title">ROI Inmobiliaria</h1>
+                <h2 class="header__container__logo__subtitle">Retorno de tu inversión</h2>
+            </div>
+        </div>
+        <h1 class="header__title">Contacto</h1>
+        <div class="header__options">
+            <a href="login.html"><img class="nav__btn" src="imagenes/bx-user.svg" alt=""></a>
+            <img class="nav__btn open__menu" src="imagenes/bx-menu.svg" alt="">
+        </div>
+        <nav class="header__nav">
+            <img class="nav__btn close__menu" src="imagenes/bx-x.svg" alt="">
+            <ul class="header__nav__ul">
+                <li class="header__nav__ul__li"><a class="header__nav__ul__li__a" href="index.html">Home</a></li>
+                <li class="header__nav__ul__li"><a class="header__nav__ul__li__a" href="sale.html">Venta</a></li>
+                <li class="header__nav__ul__li"><a class="header__nav__ul__li__a" href="rent.html">Renta</a></li>
+                <li class="header__nav__ul__li"><a class="header__nav__ul__li__a" href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h2 class="contacto__subtitle">Agenda una cita</h2>
+    <main id="main__contacto">
+        <form id="agendar__cita" action="submit">
+            <div>
+                <label>Nombre:</label>
+                <input class="agendar__cita__inputs" type="text" id="nombre">
+            </div>
+            <div>
+                <label>Apellido:</label>
+                <input class="agendar__cita__inputs" type="text" id="apellido">
+            </div>
+            <div>
+                <label>Email:</label>
+                <input class="agendar__cita__inputs" type="email" id="email">
+            </div>
+            <div>
+                <label>Telefono:</label>
+                <input class="agendar__cita__inputs" type="number" id="telefono">
+            </div>
+            <div>
+                <label>Fecha de la cita:</label>
+                <input class="agendar__cita__inputs" type="date" itemref="fecha">
+            </div>
+            <div>
+                <label>Hora de la cita:</label>
+                <input class="agendar__cita__inputs" type="time" id="hora">
+            </div>
+            <label>Motivo de la cita:</label>
+            <textarea name="" id="mensaje" cols="30" rows="10"></textarea>
+            <div>
+                <button class="btn__agendar__cita" id="btn__cancelar">Cancelar</button>
+                <input class="btn__agendar__cita" type="submit" name="" id="btn__agendar">
+            </div>
+        </form>
+        <img src="imagenes/icono-agendar-cita.png" alt="">
+    </main>
+    <section id="ubicacion">
+        <h2 class="contacto__subtitle">Ubicación</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3732.856538181204!2d-103.36116858507326!3d20.67541478619084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428ae02a743f379%3A0x7878d3a187706e57!2sAv%20Ju%C3%A1rez%20976%2C%20Col%20Americana%2C%20Americana%2C%2044160%20Guadalajara%2C%20Jal.!5e0!3m2!1ses-419!2smx!4v1637944344240!5m2!1ses-419!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </section>
+
+    <h2 class="contacto__subtitle">Sobre nosotros</h2>
+    <section class="historia__container">
+        <div class="historia">
+            <h2 class="historia__title">Historia</h2>
+            <p class="historia__text">Somos una empresa ubicada en Guadalajara, Jalisco. con más de 5 años de experiencia en la industria inmobiliaria, ofreciendo bienes raíces en todo el estado. ROI Inmobiliaria fue fundada por Araceli Gramajo el 12 de junio de 2016. En 2017 firmamos un convenio con Hipotecando MX, empresa dedicada a préstamos hipotecarios, que fue una asociación clave para ofrecer a nuestros clientes un servicio completo y cómodo.
+                <br>
+                Nuestro desempeño ha sido destacado por nuestro asesoramiento especializado a través de la formación de nuestros colaboradores, en 2018 obtuvimos la certificación EC 0110, “ASESORAMIENTO EN MARKETING INMOBILIARIO”, y en 2019 obtuvimos la certificación “GREAT PLACE TO WORK”. Lo que confirma las cualidades y valores de nuestros empleados.</p>
+        </div>
+        <img class="historia__img" src="imagenes/companyhistory.jpg" alt="">
+    </section>
+    <section class="servicio__container">
+        <div class="servicio">
+            <h2 class="servicio__title">Servicio</h2>
+            <p class="servicio__text">Ofrecemos la promoción, gestión y comercialización en venta y renta de inmuebles, si tienes una propiedad en renta o venta, tenemos contactos y acuerdos con potenciales clientes. En nuestras redes sociales promocionamos tu casa, apartamento, edificio o terreno que quieras vender o rentar. Nos ocupamos de todos los procesos que intervienen en el servicio, como es la redacción de contratos, etc. Nuestra ventaja competitiva es la formación de nuestros empleados y los valores de la empresa, así como los acuerdos con otros asesores y empresas inmobiliarias, y nuestra convenios con Hipotecando MX que hacen el proceso más rápido, cómodo y seguro para nuestros clientes.</p>
+        </div>
+        <img class="servicio__img" src="imagenes/equipoROI.jpeg" alt="">
+    </section>
+
+<section class="nuestros__valores">
+    <h2 class="title__section">Nuestros valores</h2>
+    <div class="valores__container">
+        <div class="valores__item">
+            <h3 class="valor__title">Confianza</h3>
+            <div class="valor__info__container">
+                <div class="valor__info">
+                    <img class="valor__img" src="imagenes/confidence.jpg" alt="">
+                    <p class="valor__text">Nuestra empresa confía en cada uno de sus líderes y colaboradores, sintiéndose valorados y confiados, ofrecen lo mejor de sí mismos.</p>
+                </div>
+            </div>
+        </div>
+        <div class="valores__item">
+            <h3 class="valor__title">Comunicación</h3>
+            <div class="valor__info__container">
+                <div class="valor__info">
+                    <img class="valor__img" src="imagenes/comunication.jpg" alt="">
+                    <p class="valor__text">La comunicación es fundamental para ROI inmobiliaria porque crea un entorno saludable dentro de la empresa para solucionar problemas. Adarparse a los cambios que suceden en nuestro entorno y Disminuir los errores de los empleados.</p>
+                </div>
+            </div>
+        </div>
+        <div class="valores__item">
+            <h3 class="valor__title">Orgullo</h3>
+            <div class="valor__info__container">
+                <div class="valor__info">
+                    <img class="valor__img" src="imagenes/pride.jpg" alt="">
+                    <p class="valor__text">Somos un equipo orgulloso de nuestro trabajo y la imagen de nuestra empresa, la dimensión de orgullo que se percibe es muy grande, influyendo enormemente en los objetivos de ROI Inmobiliaria.</p>
+                </div>
+            </div>
+        </div>
+        <div class="valores__item">
+            <h3 class="valor__title">Responsabilidad</h3>
+            <div class="valor__info__container">
+                <div class="valor__info">
+                    <img class="valor__img" src="imagenes/responsability.jpg" alt="">
+                    <p class="valor__text">Promovemos la responsabilidad hacia todos nuestros colaboradores para que se sientan comprometidos con su trabajo y sobre todo que realmente quieran hacerlo.</p>
+                </div>
+            </div>
+        </div>
+        <div class="valores__item">
+            <h3 class="valor__title">Trabajo en equipo</h3>
+            <div class="valor__info__container">
+                <div class="valor__info">
+                    <img class="valor__img" src="imagenes/teamwork.jpg" alt="">
+                    <p class="valor__text">Queremos un equipo de trabajo compuesto por las mejores personas, valorando la participación de cada una de ellas y aprovechando las ideas originales.</p>
+                </div>
+            </div>
+        </div>
+        <div class="valores__item">
+            <h3 class="valor__title">Pasión</h3>
+            <div class="valor__info__container">
+                <div class="valor__info">
+                    <img class="valor__img" src="imagenes/passion.jpg" alt="">
+                    <p class="valor__text">Tenemos un espíritu lleno de pasión. Comprometiéndonos con el corazón y la mente, con el objetivo de mejorar constantemente el trabajo de cada uno de los empleados.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="testimonios">
+    <h2 class="title__section">Testimonios</h2>
+    <div class="testimonio__persona">
+            <div class="testimonio__persona__img ajustar__derecha">
+                <img src="imagenes/LuisDiaz.jpg" alt="">
+                <h3 class="info__persona">Consultor externo</h3>
+            </div>
+        <p class="testimonio__persona__text">"He estado trabajando con ROI durante 4 años consecutivos, debo aceptar que hacemos un buen equipo, tienen buenos proyectos y nunca han sido malos conmigo. Estoy contento con el progreso que he hecho, sé que iré más lejos."<b>Luis Díaz</b></p>
+    </div>
+    <div class="testimonio__persona voltear">
+        <p class="testimonio__persona__text">"Soy uno de los primeros empleados que la empresa ha tenido, y no puedo estar más feliz con este trabajo. Me ha ayudado a crecer en mi trabajo, económica y personalmente, el entorno laboral es muy bueno, los valores son parte de nosotros y el trato siempre ha sido justo. Espero seguir siendo parte de este equipo durante mucho tiempo."<b>Carla García</b></p>
+        <div class="testimonio__persona__img ajustar__izquierda">
+        <img src="imagenes/CarlaGarcia.jpg" alt="">
+        <h3 class="info__persona">Empleado</h3>
+        </div>
+    </div>
+    <div class="testimonio__persona">
+        <div class="testimonio__persona__img ajustar__derecha">
+            <img src="imagenes/MarcoAriosto.jpg" alt="">
+            <h3 class="info__persona">Cliente</h3>
+        </div>
+        <p class="testimonio__persona__text">"Soy un cliente leal de ROI Inmobiliaria, han merecido la certificación GPTW, nunca he tenido quejas, el personal está altamente capacitado y siempre supera mis expectativas."<b>Marco Ariosto</b></p>
+    </div>
+</section>
+
+    <footer>
+        <div class="datos__contacto">
+            <h3>Información</h3>
+            <a href="https://goo.gl/maps/pntVrjN2XoSKmuXd7" target=”_blank”><img src="imagenes/bx-current-location.svg" alt=""> Av Juárez 976, Col Americana, Americana, 44100 Guadalajara, Jal.</a>
+            <a href="https://wa.me/529612423431?text=Hola%20ROI%20Inmobiliaria,%20quiero%20mas%20informacion" target=”_blank”><img src="imagenes/bxl-whatsapp.svg" alt="">9612423431</a>
+            <a href="mailto:alan.gusteg@gmail.com" target=”_blank”><img src="imagenes/bx-mail-send.svg" alt="">alan.gusteg@gmail.com</a>
+        </div>
+        <div class="footer__nav">
+            <h3>Navegación</h3>
+            <a href="index.html">Inicio</a>
+            <a href="rent.html">En renta</a>
+            <a href="sale.html">En venta</a>
+            <a href="contact.html">Contáctanos</a>
+            <a href="login.html">Iniciar sesión</a>
+            <a href="register.html">Regístrarse</a>
+        </div>
+    </footer>
+        <script src="code.js"></script>
+
+</body>
+</html>
