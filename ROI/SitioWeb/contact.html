@@ -37,39 +37,39 @@
     </header>
     <h2 class="contacto__subtitle">Agenda una cita</h2>
     <main id="main__contacto">
-        <form id="agendar__cita" action="submit">
+        <form id="agendar__cita">
             <div>
                 <label>Nombre:</label>
-                <input class="agendar__cita__inputs" type="text" id="nombre">
+                <input class="agendar__cita__inputs" type="text" id="cNombre" name="nombre">
             </div>
             <div>
                 <label>Apellido:</label>
-                <input class="agendar__cita__inputs" type="text" id="apellido">
+                <input class="agendar__cita__inputs" type="text" id="cApellido" name="apellido">
             </div>
             <div>
                 <label>Email:</label>
-                <input class="agendar__cita__inputs" type="email" id="email">
+                <input class="agendar__cita__inputs" type="email" id="cEmail" name="email">
             </div>
             <div>
-                <label>Telefono:</label>
-                <input class="agendar__cita__inputs" type="number" id="telefono">
+                <label>Teléfono:</label>
+                <input class="agendar__cita__inputs" type="number" id="cTelefono" name="telefono">
             </div>
             <div>
                 <label>Fecha de la cita:</label>
-                <input class="agendar__cita__inputs" type="date" itemref="fecha">
+                <input class="agendar__cita__inputs" type="date" id="cFecha" name="fecha">
             </div>
             <div>
                 <label>Hora de la cita:</label>
-                <input class="agendar__cita__inputs" type="time" id="hora">
+                <input class="agendar__cita__inputs" type="time" id="cHora" name="hora">
             </div>
             <label>Motivo de la cita:</label>
-            <textarea name="" id="mensaje" cols="30" rows="10"></textarea>
+            <textarea style="font-size: 1.4rem;" name="mensaje" id="cMensaje" cols="30" rows="10"></textarea>
             <div>
                 <button class="btn__agendar__cita" id="btn__cancelar">Cancelar</button>
-                <input class="btn__agendar__cita" type="submit" name="" id="btn__agendar">
+                <input class="btn__agendar__cita" type="submit" id="btn__agendar" value="Agendar">
             </div>
         </form>
-        <img src="imagenes/icono-agendar-cita.png" alt="">
+        <img id="imgCalendar" src="imagenes/icono-agendar-cita.png" alt="">
     </main>
     <section id="ubicacion">
         <h2 class="contacto__subtitle">Ubicación</h2>
@@ -196,6 +196,113 @@
             <a href="register.html">Regístrarse</a>
         </div>
     </footer>
+        <script>
+
+            const cNombre = document.getElementById('cNombre');
+            const cApellido = document.getElementById('cApellido');
+            const cEmail = document.getElementById('cEmail');
+            const cTelefono = document.getElementById('cTelefono');
+            const cFecha = document.getElementById('cFecha');
+            const cHora = document.getElementById('cHora');
+            const cMensaje = document.getElementById('cMensaje');
+
+            const cFormulario = document.getElementById('agendar__cita');
+            const btnAgendar = document.getElementById('btn__agendar');
+            const btnCancelar = document.getElementById('btn__cancelar');
+
+            const mContacto = document.getElementById('main__contacto');
+            const imgCalendar = document.getElementById('imgCalendar');
+
+            const objetoCita = {
+                nombre: '',
+                apellido: '',
+                email: '',
+                telefono: '',
+                fecha: '',
+                hora: '',
+                mensaje: ''
+            }
+
+            function datosCita(e) {
+                objetoCita[e.target.name] = e.target.value;
+            }
+
+            cNombre.addEventListener('change',datosCita);
+            cApellido.addEventListener('change',datosCita);
+            cEmail.addEventListener('change',datosCita);
+            cTelefono.addEventListener('change',datosCita);
+            cFecha.addEventListener('change',datosCita);
+            cHora.addEventListener('change',datosCita);
+            cMensaje.addEventListener('change',datosCita);
+
+            btnAgendar.addEventListener('click',crearCita);
+            btnCancelar.addEventListener('click',()=>{
+                cFormulario.reset();
+            })
+
+            function crearCita(e) {
+                e.preventDefault();
+                const {nombre,apellido,email,telefono,fecha,hora,mensaje} = objetoCita;
+                if (nombre == '' || apellido == '' || email == '' || telefono == '' || fecha == '' || hora == '' || mensaje == '') {
+                    alerta();
+                    return;
+                }
+                confirmarCita({...objetoCita});
+            }
+
+            function confirmarCita(cita) {
+                cFormulario.reset();
+                cFormulario.remove();
+                const {nombre,apellido,email,telefono,fecha,hora,mensaje} = cita;
+
+                let horaActual = new Date().getHours();
+                let saludo;
+                console.log(horaActual);
+                if (horaActual < 12) {
+                    saludo = 'Buenos días';
+                } else if (hora < 19) {
+                    saludo = 'Buenas tardes';
+                } else {
+                    saludo = 'Buenas noches'
+                }
+
+                const ventana = document.createElement('div');
+                const btnNuevaCita = document.createElement('button');
+                ventana.innerHTML = `
+                <h2>${saludo} ${nombre} ${apellido}.</h2>
+                <br>
+                <p>Le informamos que si cita ha sido agendada para el día ${fecha} a las ${hora}.</p>
+                <br>
+                <p>Uno de nuestros asesores lo atenderá tan pronto como sea posible, le pedimos que este pendiente del correo y teléfono que nos ha proporcionado.</p>
+                <br>
+                <div>
+                <p>email: ${email}</p>
+                <p>teléfono: ${telefono}</p>
+                </div>
+                `;
+                btnNuevaCita.textContent = 'Agendar nueva cita';
+                btnNuevaCita.className = 'btnNuevaCita';
+                ventana.className = 'confirmacionCita'
+                btnNuevaCita.onclick = ()=>{
+                    location.reload();
+                };
+                ventana.appendChild(btnNuevaCita);
+                mContacto.insertBefore(ventana,imgCalendar);
+            }
+            function alerta() {
+                const alerta = document.createElement('P');
+                alerta.textContent = 'Todos los campos son obligatorios';
+                alerta.className = 'error location';
+                alerta.style.top = "110px"
+                mContacto.appendChild(alerta);
+
+                setTimeout(() => {
+                    alerta.remove();
+                },2000);
+            }
+
+
+        </script>
         <script src="code.js"></script>
 
 </body>
